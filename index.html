@@ -29,10 +29,12 @@
   </section>
 
   <section id="about">
-    <h2>About Me</h2>
-    <p>I recently earned an Associate’s Degree in Computer Programming and have experience with 
+    <div class="centered">
+      <h2>About Me</h2>
+      <p>I recently earned an Associate’s Degree in Computer Programming and have experience with 
         Java, C++, Python, PHP, SQL, and front-end technologies like HTML and CSS.
          I'm passionate about learning new technologies, building clean, efficient code and solving problems through software.</p>
+    </div>
   </section>
 
   <section id="projects">
@@ -47,8 +49,13 @@
         <h3>Appleridge Stone Brochure</h3>
         <p>A stylized brochure for Appleridge Stone veneer stone manufacturing company.<br>
         Beautifully displaying their products and services</p>
-        <img src="https://www.dropbox.com/scl/fi/z1x0hljz19z0itqnsr8f1/2025_Brochure_front_sides_v2.png?rlkey=zvo8nibwzyzb1vkoagohuopuq&st=vvszayd9&raw=1" alt="Front pages" style="width: 50%;height: 50%;">
-        <img src="https://www.dropbox.com/scl/fi/re95iwjbdqjqo6sv8u1ns/2025_Brochure_Inner_pages_v2.png?rlkey=wne4zb8evnnt2hf9kyq212ugp&st=ljhsbbsy&raw=1" alt="Inner pages" style="width: 50%;height: 50%;">
+        <img id="projectImage1" class="modal-trigger" src="https://www.dropbox.com/scl/fi/z1x0hljz19z0itqnsr8f1/2025_Brochure_front_sides_v2.png?rlkey=zvo8nibwzyzb1vkoagohuopuq&st=vvszayd9&raw=1" alt="Front pages" style="width: 50%;height: 50%;">
+        <img id="projectImage2" class="modal-trigger" src="https://www.dropbox.com/scl/fi/re95iwjbdqjqo6sv8u1ns/2025_Brochure_Inner_pages_v2.png?rlkey=wne4zb8evnnt2hf9kyq212ugp&st=ljhsbbsy&raw=1" alt="Inner pages" style="width: 50%;height: 50%;">
+          <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+            <div id="caption"></div>
+          </div>
       </div>
     </div>
   </section>
@@ -75,5 +82,33 @@
   <footer>
     <p>&copy; 2025 Joshua Ostach. All rights reserved.</p>
   </footer>
+  
+  <script>
+  const modal = document.getElementById("myModal");
+  const modalImg = document.getElementById("img01");
+  const captionText = document.getElementById("caption");
+  const span = document.getElementsByClassName("close")[0];
+
+  const images = document.querySelectorAll("#projectImage1, #projectImage2");
+
+  images.forEach(image => {
+    image.onclick = function () {
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = this.alt;
+    };
+  });
+
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  window.onclick = function (event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+</script>
+
 </body>
 </html>
